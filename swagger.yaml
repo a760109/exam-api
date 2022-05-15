@@ -1,0 +1,18 @@
+components:
+  schemas:
+    Resp:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: response status
+        message:
+          type: string
+          description: Message text
+  responses:
+    Default:
+      description: Default Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resp'
