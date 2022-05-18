@@ -2,6 +2,7 @@ const jwksClient = require('jwks-rsa');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 const UserRepo = require('../db/user');
+const _ = require('lodash');
 
 const client = jwksClient({
   jwksUri: `https://${config.AUTH0_DOMAIN}/.well-known/jwks.json`,
@@ -33,6 +34,7 @@ async function getUserDetailsByAuth0(idToken) {
     let userData = {
       account: userDetails.email,
       lastLoginAt: new Date(),
+      name: user && !_.isEmpty(user.name) ? user.name : userDetails.name,
       sub: userDetails.sub,
       times: user ? user.times + 1 : 1,
     };

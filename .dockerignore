@@ -1,0 +1,10 @@
+.git
+build
+node_modules
+model
+db
+routes
+services
+.dockerignore
+Dockerfile
+.vscode
